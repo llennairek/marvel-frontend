@@ -1,14 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import logo from "../../assets/logo.svg";
 
 function Header() {
   return (
     <header>
-      <Link to="/">Home</Link>
-      <Link to="/personnages">personnages</Link>
-      <Link to="/comics">comics</Link>
-      <Link to="/favoris">favoris</Link>
+      <nav>
+        <div className="link-wrapper">
+          <Link to="/">Home</Link>
+        </div>
+        <div className="link-wrapper">
+          <Link to="/personnages">Personnages</Link>
+        </div>
+        <div className="logo-wrapper">
+          <img src={logo} alt="logo" className="logo" />
+        </div>
+        <div className="link-wrapper">
+          <Link to="/comics">Comics</Link>
+        </div>
+        <div className="link-wrapper">
+          <Link to="/favoris">Favoris</Link>
+        </div>
+      </nav>
     </header>
   );
 }

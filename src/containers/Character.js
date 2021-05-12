@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Item from "../components/Item/Item";
+import "./Character.css";
 
 function Character() {
   const { id } = useParams();
@@ -17,9 +19,36 @@ function Character() {
   }, [id]);
 
   return data ? (
-    <div>
-      <img src={data.thumbnail.path + "." + data.thumbnail.extension} alt="" />
-    </div>
+    <main className="main-character">
+      <div className="character-img-wrapper">
+        <img
+          src={data.thumbnail.path + "." + data.thumbnail.extension}
+          alt=""
+          // added style to see the text image not found on the default image
+          style={
+            data.thumbnail.path ===
+            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+              ? { objectPosition: "left" }
+              : null
+          }
+        />
+      </div>
+      <div className="character-infos-wrapper">
+        <h1>{data.name}</h1>
+        <p>
+          {data.description ? data.description : "No description available"}
+        </p>
+        <div className="comics-wrapper">
+          {data.comics.map((item) => {
+            return (
+              <div className="item">
+                <Item key={item._id} data={item} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </main>
   ) : (
     <div>En chargement</div>
   );

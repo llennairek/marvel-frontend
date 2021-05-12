@@ -1,0 +1,27 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page-container button {
+  margin: 0 2px;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 2px;
+  transition: all 0.4s;
+}
+
+.page-container button:hover {
+  background-color: var(--black-color);
+  color: var(--red-color);
+}
+
+.pages {
+  width: 33px;
+  height: 33px;
+}

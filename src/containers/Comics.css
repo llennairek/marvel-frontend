@@ -1,0 +1,16 @@
+.comics-item {
+  height: 400px;
+  min-width: 350px;
+  max-width: 450px;
+  cursor: default;
+  color: var(--white-color);
+}
+
+.comics-item:hover {
+  border-color: var(--black-color);
+}
+
+.comics-item .description-wrapper {
+  height: 350px;
+  overflow: hidden;
+}

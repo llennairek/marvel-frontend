@@ -1,0 +1,21 @@
+footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-size: 1rem;
+}
+
+footer a {
+  color: var(--red-color);
+  font-weight: 700;
+}
+
+footer a:hover {
+  background-color: var(--red-color);
+  color: white;
+  /* text-transform: uppercase; */
+  line-height: 0.8;
+}

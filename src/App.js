@@ -5,6 +5,7 @@ import Comics from "./containers/Comics";
 import Favorites from "./containers/Favorites";
 import Home from "./containers/Home";
 import Character from "./containers/Character";
+import Footer from "./containers/Footer";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }

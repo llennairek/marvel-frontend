@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Item from "../components/Item/Item";
+import defaultImage from "../assets/default-image.jpg";
 import "./Character.css";
 
 function Character() {
@@ -22,15 +23,13 @@ function Character() {
     <main className="main-character">
       <div className="character-img-wrapper">
         <img
-          src={data.thumbnail.path + "." + data.thumbnail.extension}
-          alt=""
-          // added style to see the text image not found on the default image
-          style={
+          src={
             data.thumbnail.path ===
             "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-              ? { objectPosition: "left" }
-              : null
+              ? defaultImage
+              : data.thumbnail.path + "." + data.thumbnail.extension
           }
+          alt=""
         />
       </div>
       <div className="character-infos-wrapper">

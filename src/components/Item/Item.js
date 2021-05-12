@@ -1,4 +1,5 @@
 import React from "react";
+import defaultImage from "../../assets/default-image.jpg";
 import "./Item.css";
 
 function Item({ data }) {
@@ -9,15 +10,13 @@ function Item({ data }) {
       </div>
       <div className="img-wrapper">
         <img
-          src={data.thumbnail.path + "." + data.thumbnail.extension}
-          alt={data.name}
-          // added style to see the text image not found on the default image
-          style={
+          src={
             data.thumbnail.path ===
             "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-              ? { objectPosition: "bottom" }
-              : null
+              ? defaultImage
+              : data.thumbnail.path + "." + data.thumbnail.extension
           }
+          alt={data.name}
         />
       </div>
       <div className="description-wrapper">

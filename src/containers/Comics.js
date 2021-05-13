@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Item from "../components/Item/Item";
+import Pagination from "../components/Pagination/Pagination";
 import "./Comics.css";
 
 function Comics() {
@@ -50,7 +50,7 @@ function Comics() {
     };
 
     fetchData();
-  }, [page, search]);
+  }, [page, search, searching]);
 
   return data ? (
     <main className="main">
@@ -64,10 +64,16 @@ function Comics() {
           onChange={handleFilter}
         />
       </div>
+      <Pagination
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+        pageArray={pageArray}
+      />
       <div className="container">
         {data.results.map((item) => {
           return (
-            <div to={`/personnage/${item._id}`} className="item comics-item">
+            <div className="item comics-item">
               <Item key={item._id} data={item} />
             </div>
           );
@@ -75,32 +81,12 @@ function Comics() {
       </div>
 
       {/* pagination */}
-      <div className="page-container">
-        {page - 1 > 0 ? (
-          <button
-            onClick={() => {
-              setPage(page - 1);
-              window.scrollTo(0, 0);
-            }}
-          >
-            previous page
-          </button>
-        ) : null}
-
-        <span>
-          Page {page} on {totalPages}
-        </span>
-        {page + 1 <= totalPages ? (
-          <button
-            onClick={() => {
-              setPage(page + 1);
-              window.scrollTo(0, 0);
-            }}
-          >
-            next page
-          </button>
-        ) : null}
-      </div>
+      <Pagination
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+        pageArray={pageArray}
+      />
     </main>
   ) : (
     <div className="loading">En chargement...</div>

@@ -16,6 +16,10 @@ main {
   font-size: 1.6rem;
 }
 
+*::placeholder {
+  text-align: center;
+}
+
 /* main container on personnages and comics pages */
 main {
   display: flex;
@@ -51,6 +55,7 @@ main {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 .item {
@@ -128,4 +133,10 @@ main {
 .current {
   background-color: var(--black-color) !important;
   color: var(--red-color) !important;
+}
+
+.loading {
+  font-size: 4rem;
+  color: var(--red-color);
+  text-align: center;
 }

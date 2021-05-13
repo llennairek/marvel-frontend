@@ -16,7 +16,7 @@
   font-size: 6rem;
   font-weight: 700;
   letter-spacing: -3px;
-  transform: scaleY(1.9);
+  transform: scaleY(1.5);
   color: var(--white-color);
   /* background-color: var(--red-color); */
   padding: 0 2px;
@@ -28,7 +28,7 @@
   background-color: var(--red-color);
   color: var(--white-color);
   padding: 0 2px;
-  transform: scaleY(1);
+  /* transform: scaleY(1); */
 }
 
 .main-home p span.red {

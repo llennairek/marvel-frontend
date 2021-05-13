@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Characters.css";
 import Item from "../components/Item/Item";
+import Pagination from "../components/Pagination/Pagination";
 
 function Characters() {
   const [data, setData] = useState(null);
@@ -41,16 +42,13 @@ function Characters() {
         }
         setData(response.data);
         setTotalPages(Math.floor(response.data.count / limit) + 1);
-        // if (page > Math.floor(response.data.count / limit) + 1) {
-        //   setPage(1);
-        // }
       } catch (error) {
         console.error(error.message);
       }
     };
 
     fetchData();
-  }, [page, search]);
+  }, [page, search, searching]);
 
   return data ? (
     <main className="main">
@@ -64,6 +62,12 @@ function Characters() {
           onChange={handleFilter}
         />
       </div>
+      <Pagination
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+        pageArray={pageArray}
+      />
       <div className="container">
         {data.results.map((item) => {
           return (
@@ -75,43 +79,12 @@ function Characters() {
       </div>
 
       {/* pagination */}
-      <div className="page-container">
-        {page - 1 > 0 ? (
-          <button
-            onClick={() => {
-              setPage(page - 1);
-              window.scrollTo(0, 0);
-            }}
-          >
-            Previous page
-          </button>
-        ) : null}
-
-        {pageArray.map((item, index) => {
-          return (
-            <button
-              key={index}
-              className={index === page - 1 ? "pages current" : "pages"}
-              onClick={() => {
-                setPage(item);
-                window.scrollTo(0, 0);
-              }}
-            >
-              {item}
-            </button>
-          );
-        })}
-        {page + 1 <= totalPages ? (
-          <button
-            onClick={() => {
-              setPage(page + 1);
-              window.scrollTo(0, 0);
-            }}
-          >
-            Next page
-          </button>
-        ) : null}
-      </div>
+      <Pagination
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+        pageArray={pageArray}
+      />
     </main>
   ) : (
     <div className="loading">En chargement...</div>

@@ -23,6 +23,8 @@ body {
   /* background-color: var(--white-color); */
   background-color: black;
   /* letter-spacing: -1px; */
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #root {

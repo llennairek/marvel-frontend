@@ -1,16 +1,20 @@
 .main-character {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   /* flex: 1; */
-  min-height: calc(100vh - 100px - 50px);
+  /* min-height: calc(100vh - 100px - 90px); */
+}
+
+.main-chracter-wrapper {
+  display: flex;
 }
 
 .character-img-wrapper {
-  height: calc(100vh - 100px - 50px - 40px);
+  height: calc(100vh - 100px - 50px - 160px);
   width: 30%;
-  margin-top: 10px;
+  margin-top: 0px;
   position: sticky;
-  top: 100px;
+  top: 150px;
 }
 
 .main-character img {
@@ -29,18 +33,20 @@
   padding: 0 20px;
 }
 
-.character-infos-wrapper h1 {
+.main-character h1 {
   text-align: center;
   padding: 10px 0 20px 0;
   font-size: 6rem;
   text-decoration: underline var(--red-color);
+  margin-bottom: 40px;
+  color: var(--white-color);
 }
 
 .comics-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 70px;
 }
 
 .comics-wrapper .item {

@@ -1,0 +1,57 @@
+.main-favorites {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  color: var(--red-color);
+}
+
+.characters-favorites-wrapper > h2,
+.comics-favorites-wrapper > h2 {
+  font-size: 6rem;
+  margin: 20px 0 60px 0;
+}
+
+.characters-favorites-wrapper h3 {
+  font-size: 3.5rem;
+}
+.characters-favorites-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.comics-favorites-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.favorites-item {
+  height: 400px;
+  /* width: 200px; */
+  /* max-width: 300px; */
+  cursor: default;
+  color: var(--white-color);
+  margin: 0 2px 20px 2px;
+}
+
+.favorites-item:hover .item-flip-wrapper {
+  transform: rotateX(-180deg);
+}
+
+.vertical-spacer {
+  width: 2px;
+  background-color: var(--red-color);
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}

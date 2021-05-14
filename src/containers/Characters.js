@@ -5,7 +5,7 @@ import "./Characters.css";
 import Item from "../components/Item/Item";
 import Pagination from "../components/Pagination/Pagination";
 
-function Characters() {
+function Characters({ userInfos, setUserInfos }) {
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
@@ -52,12 +52,20 @@ function Characters() {
 
   return data ? (
     <main className="main">
+      <h1>
+        <span className="underline">CHARACTERS</span>
+      </h1>
+      {/* <p className="subtitle">
+        You can add a character to your favorites by clicking the star
+        <br />
+        Click a card to have more info about the character
+      </p> */}
       <div className="filter">
         <input
           type="text"
           name="search-characters"
           id="search-characters"
-          placeholder="Rechercher des personnages"
+          placeholder="Search for characters"
           value={search}
           onChange={handleFilter}
         />
@@ -69,13 +77,25 @@ function Characters() {
         pageArray={pageArray}
       />
       <div className="container">
-        {data.results.map((item) => {
-          return (
-            <Link to={`/personnage/${item._id}`} className="item">
-              <Item key={item._id} data={item} />
-            </Link>
-          );
-        })}
+        {data.count > 0 ? (
+          data.results.map((item) => {
+            return (
+              <Link
+                key={item._id}
+                to={`/personnage/${item._id}`}
+                className="item"
+              >
+                <Item
+                  data={item}
+                  userInfos={userInfos}
+                  setUserInfos={setUserInfos}
+                />
+              </Link>
+            );
+          })
+        ) : (
+          <p className="no-results">No results</p>
+        )}
       </div>
 
       {/* pagination */}

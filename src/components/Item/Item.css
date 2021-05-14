@@ -1,4 +1,5 @@
 .item-wrapper {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -38,4 +39,28 @@
 .description {
   font-size: 1.2rem;
   text-align: center;
+}
+
+.far-star {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  height: 20px !important;
+  width: 20px !important;
+  z-index: 99;
+  color: var(--white-color);
+}
+
+.far-star:hover {
+  color: var(--red-color);
+}
+
+.fas-star {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  height: 20px !important;
+  width: 20px !important;
+  z-index: 99;
+  color: var(--red-color);
 }

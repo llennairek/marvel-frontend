@@ -15,7 +15,8 @@ nav {
 }
 
 .link-wrapper {
-  width: 200px;
+  width: 250px;
+  /* min-width: 210px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,8 +52,33 @@ nav a:hover {
   height: 60px;
 }
 
+.logo-wrapper:hover {
+  background-color: transparent;
+}
+
 .links {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.user-header {
+  color: var(--white-color);
+}
+
+.logout-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1028px) {
+  header {
+    font-size: 2rem;
+  }
+  nav a:hover {
+    font-size: 3rem;
+  }
 }

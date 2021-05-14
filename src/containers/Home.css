@@ -12,7 +12,7 @@
 .main-home p {
   /* display: inline;
   width: auto; */
-  margin-bottom: 150px;
+  margin-bottom: 50px;
   font-size: 6rem;
   font-weight: 700;
   letter-spacing: -3px;
@@ -29,9 +29,4 @@
   color: var(--white-color);
   padding: 0 2px;
   /* transform: scaleY(1); */
-}
-
-.main-home p span.red {
-  color: var(--red-color);
-  background-color: transparent;
 }

@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Item from "../components/Item/Item";
+import ItemFlip from "../components/Item/ItemFlip";
 import Pagination from "../components/Pagination/Pagination";
 import "./Comics.css";
 
-function Comics() {
+function Comics({ userInfos, setUserInfos }) {
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
@@ -54,30 +54,49 @@ function Comics() {
 
   return data ? (
     <main className="main">
+      <h1>
+        <span className="underline">COMICS</span>
+      </h1>
+      {/* <p className="subtitle">
+        You can add a comic to your favorites by clicking the star
+        <br />
+        Hover a card to have more info about the comic
+      </p> */}
       <div className="filter">
         <input
           type="text"
           name="search-comics"
           id="search-comics"
-          placeholder="Rechercher des comics"
+          placeholder="Search for comics"
           value={search}
           onChange={handleFilter}
         />
       </div>
+
       <Pagination
         page={page}
         setPage={setPage}
         totalPages={totalPages}
         pageArray={pageArray}
       />
+
       <div className="container">
-        {data.results.map((item) => {
-          return (
-            <div className="item comics-item">
-              <Item key={item._id} data={item} />
-            </div>
-          );
-        })}
+        {data.count > 0 ? (
+          data.results.map((item) => {
+            return (
+              <div key={item._id} className="comics-item">
+                <ItemFlip
+                  data={item}
+                  userInfos={userInfos}
+                  setUserInfos={setUserInfos}
+                  type="comic"
+                />
+              </div>
+            );
+          })
+        ) : (
+          <p className="no-results">No results</p>
+        )}
       </div>
 
       {/* pagination */}

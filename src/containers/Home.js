@@ -5,9 +5,11 @@ function Home() {
   return (
     <main className="main-home">
       <p>
-        Bienvenue dans l'univers <span>MARVEL</span> . Tout sur les{" "}
-        <span className="red">comics</span> et leurs{" "}
-        <span className="red">personnages</span>
+        Welcome to the <span>MARVEL</span> universe
+      </p>
+      <p>
+        Everything about <span className="red">comics</span> and their{" "}
+        <span className="red">characters</span>
       </p>
     </main>
   );

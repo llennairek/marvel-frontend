@@ -28,7 +28,6 @@ function Login({
         email,
         password,
       });
-      console.log(response.data);
       handleToken(response.data.token);
       setUserInfos({
         username: response.data.username,
@@ -90,9 +89,16 @@ function Login({
           Login
         </button>
       </form>
-
-      <Link to="/signup" className="button-black signup">
-        You do not have an account yet ? Signup by clicking here!
+      <p className="red" style={{ textAlign: "center" }}>
+        You do not have an account yet ?<br />
+        Click <span className="white">below</span> !
+      </p>
+      <Link
+        to="/signup"
+        className="button-black signup"
+        style={{ textAlign: "center" }}
+      >
+        Signup by clicking here!
       </Link>
     </main>
   );

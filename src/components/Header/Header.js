@@ -5,7 +5,14 @@ import logo from "../../assets/logo.svg";
 import logout from "../../assets/logoutV2.png";
 import { useHistory } from "react-router-dom";
 
-function Header({ userToken, userInfos, handleToken, setUserInfos }) {
+function Header({
+  userToken,
+  userInfos,
+  handleToken,
+  setUserInfos,
+  modalFavorites,
+  setModalFavorites,
+}) {
   const [modal, setModal] = useState(false);
 
   let history = useHistory();
@@ -32,6 +39,43 @@ function Header({ userToken, userInfos, handleToken, setUserInfos }) {
             <button className="button-red" onClick={handleLogout}>
               Yes
             </button>
+          </div>
+        </div>
+      ) : null}
+      {modalFavorites ? (
+        <div className="modal modal-favorites">
+          <div
+            className="close-modal-favorites"
+            onClick={() => {
+              setModalFavorites(false);
+            }}
+          >
+            X
+          </div>
+          <p>
+            You have to be logged to add{" "}
+            <span className="white">favorites</span> !<br />
+            If you do not have an account yet go to the signup page
+          </p>
+          <div className="logout-buttons-container">
+            <Link
+              className="button-black"
+              to="/signup"
+              onClick={() => {
+                setModalFavorites(false);
+              }}
+            >
+              Signup
+            </Link>
+            <Link
+              className="button-red"
+              to="/login"
+              onClick={() => {
+                setModalFavorites(false);
+              }}
+            >
+              Login
+            </Link>
           </div>
         </div>
       ) : null}

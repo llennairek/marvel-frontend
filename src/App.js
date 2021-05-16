@@ -20,6 +20,7 @@ library.add(faStar, regularStar);
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const [userInfos, setUserInfos] = useState({});
+  const [modalFavorites, setModalFavorites] = useState(false);
 
   const handleToken = (token) => {
     if (token) {
@@ -50,7 +51,6 @@ function App() {
     fetchData();
   }, [userToken]);
 
-  console.log(userInfos);
   return (
     <Router>
       <Header
@@ -58,6 +58,8 @@ function App() {
         userInfos={userInfos}
         setUserInfos={setUserInfos}
         handleToken={handleToken}
+        modalFavorites={modalFavorites}
+        setModalFavorites={setModalFavorites}
       />
       <Switch>
         <Route path="/login">
@@ -79,10 +81,20 @@ function App() {
           />
         </Route>
         <Route path="/comics">
-          <Comics userInfos={userInfos} setUserInfos={setUserInfos} />
+          <Comics
+            userInfos={userInfos}
+            setUserInfos={setUserInfos}
+            modalFavorites={modalFavorites}
+            setModalFavorites={setModalFavorites}
+          />
         </Route>
         <Route path="/personnages">
-          <Characters userInfos={userInfos} setUserInfos={setUserInfos} />
+          <Characters
+            userInfos={userInfos}
+            setUserInfos={setUserInfos}
+            modalFavorites={modalFavorites}
+            setModalFavorites={setModalFavorites}
+          />
         </Route>
         <Route path="/favoris">
           <Favorites userInfos={userInfos} setUserInfos={setUserInfos} />

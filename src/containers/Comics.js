@@ -4,12 +4,19 @@ import ItemFlip from "../components/Item/ItemFlip";
 import Pagination from "../components/Pagination/Pagination";
 import "./Comics.css";
 
-function Comics({ userInfos, setUserInfos }) {
+function Comics({
+  userInfos,
+  setUserInfos,
+  modalFavorites,
+  setModalFavorites,
+}) {
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const [search, setSearch] = useState("");
   const [searching, setSearching] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
+  const [displaySuggestions, setDisplaySuggestions] = useState(false);
 
   //same limit is on the backend in chracters route
   const limit = 100;
@@ -21,6 +28,15 @@ function Comics({ userInfos, setUserInfos }) {
 
   const handleFilter = (event) => {
     setSearch(event.target.value);
+    setSearching(true);
+    setDisplaySuggestions(true);
+  };
+
+  const handleSuggestion = (suggestion) => {
+    setSearch(suggestion);
+    setTimeout(() => {
+      setSuggestions([]);
+    }, 250);
   };
 
   useEffect(() => {
@@ -52,6 +68,16 @@ function Comics({ userInfos, setUserInfos }) {
     fetchData();
   }, [page, search, searching]);
 
+  useEffect(() => {
+    const regexp = new RegExp(`${search}`, "i");
+    if (data) {
+      const tempSuggestions = data.results.filter((item) =>
+        regexp.test(item.title.toLowerCase())
+      );
+      setSuggestions(tempSuggestions);
+    }
+  }, [search, data]);
+
   return data ? (
     <main className="main">
       <h1>
@@ -63,14 +89,49 @@ function Comics({ userInfos, setUserInfos }) {
         Hover a card to have more info about the comic
       </p> */}
       <div className="filter">
-        <input
-          type="text"
-          name="search-comics"
-          id="search-comics"
-          placeholder="Search for comics"
-          value={search}
-          onChange={handleFilter}
-        />
+        <div className="filter-wrapper">
+          <input
+            type="text"
+            name="search-comics"
+            id="search-comics"
+            placeholder="Search for comics"
+            value={search}
+            onChange={handleFilter}
+            onBlur={() => {
+              setTimeout(() => {
+                setDisplaySuggestions(false);
+                setSuggestions([]);
+              }, 250);
+            }}
+            autoComplete="off"
+          />
+
+          <div className="autocomplete-wrapper">
+            {suggestions.length > 0 && displaySuggestions
+              ? suggestions.map((suggestion, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="suggestion suggestion-title"
+                      onClick={() => {
+                        handleSuggestion(suggestion.title);
+                      }}
+                    >
+                      <span>{suggestion.title}</span>
+                      <img
+                        src={
+                          suggestion.thumbnail.path +
+                          "." +
+                          suggestion.thumbnail.extension
+                        }
+                        alt={suggestion.name}
+                      />{" "}
+                    </div>
+                  );
+                })
+              : null}
+          </div>
+        </div>
       </div>
 
       <Pagination
@@ -89,6 +150,8 @@ function Comics({ userInfos, setUserInfos }) {
                   data={item}
                   userInfos={userInfos}
                   setUserInfos={setUserInfos}
+                  modalFavorites={modalFavorites}
+                  setModalFavorites={setModalFavorites}
                   type="comic"
                 />
               </div>

@@ -28,7 +28,6 @@ function Signup({
         email,
         password,
       });
-      console.log(response.data);
       handleToken(response.data.token);
       setUserInfos({
         username: response.data.username,

@@ -37,8 +37,13 @@ main {
 }
 
 .red {
-  color: var(--red-color);
-  background-color: transparent;
+  color: var(--red-color) !important;
+  background-color: transparent !important;
+}
+
+.white {
+  color: var(--white-color) !important;
+  background-color: transparent !important;
 }
 
 .underline {
@@ -68,7 +73,9 @@ main h1 {
 }
 
 .filter {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -79,7 +86,7 @@ main h1 {
   padding: 10px 50px;
   border: 3px solid var(--red-color);
   border-radius: 5px;
-  margin: 40px 0;
+  margin-top: 40px;
   background-color: var(--black-color);
   color: var(--white-color);
 }
@@ -135,6 +142,7 @@ main h1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 40px 0;
 }
 
 .page-container button {
@@ -244,4 +252,69 @@ main h1 {
 .fas-star,
 .far-star {
   cursor: pointer;
+}
+
+/* AUTOCOMPLETE */
+.filter-wrapper {
+  position: relative;
+}
+
+.autocomplete-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  z-index: 99999999999;
+  border: 1px solid black;
+}
+
+.suggestion {
+  height: 50px;
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--black-color);
+  /* border-bottom: 1px solid var(--red-color);
+  border-left: 1px solid var(--red-color);
+  border-right: 1px solid var(--red-color); */
+  color: var(--white-color);
+  cursor: pointer;
+
+  padding: 5px;
+}
+
+.suggestion img {
+  height: 100%;
+}
+
+.suggestion-title {
+  font-size: 12px;
+}
+
+/* MODALFAVORITES */
+.modal-favorites {
+  z-index: 20;
+  top: 0;
+  left: 0;
+}
+
+.modal-favorites p {
+  margin-bottom: 100px;
+}
+
+.modal-favorites a {
+  margin: 0 10px;
+  padding: 10px 25px;
+}
+
+.close-modal-favorites {
+  position: absolute;
+  color: var(--white-color);
+  top: 15px;
+  right: 15px;
+  font-size: 4rem;
+  background-color: var(--red-color);
+  cursor: pointer;
+  line-height: 0.8;
 }

@@ -4,7 +4,14 @@ import "./ItemFlip.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
-function ItemFlip({ data, userInfos, setUserInfos, type }) {
+function ItemFlip({
+  data,
+  userInfos,
+  setUserInfos,
+  type,
+  modalFavorites,
+  setModalFavorites,
+}) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleFavorite = async (event) => {
@@ -53,7 +60,7 @@ function ItemFlip({ data, userInfos, setUserInfos, type }) {
         }
       }
     } else {
-      alert("You have to be logged in to add favorites");
+      setModalFavorites(true);
     }
   };
 

@@ -11,6 +11,8 @@ function Characters({ userInfos, setUserInfos }) {
   const [totalPages, setTotalPages] = useState(null);
   const [search, setSearch] = useState("");
   const [searching, setSearching] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
+  const [displaySuggestions, setDisplaySuggestions] = useState(false);
 
   //same limit is on the backend in chracters route
   const limit = 100;
@@ -23,6 +25,12 @@ function Characters({ userInfos, setUserInfos }) {
   const handleFilter = (event) => {
     setSearch(event.target.value);
     setSearching(true);
+    setDisplaySuggestions(true);
+  };
+
+  const handleSuggestion = (suggestion) => {
+    setSearch(suggestion);
+    setSearching(true);
   };
 
   useEffect(() => {
@@ -31,13 +39,15 @@ function Characters({ userInfos, setUserInfos }) {
         let response;
         if (searching) {
           response = await axios.get(
-            `http://localhost:3001/characters?name=${search}`
+            encodeURI(`http://localhost:3001/characters?name=${search}`)
           );
           setSearching(false);
           setPage(1);
         } else {
           response = await axios.get(
-            `http://localhost:3001/characters?page=${page}&name=${search}`
+            encodeURI(
+              `http://localhost:3001/characters?page=${page}&name=${search}`
+            )
           );
         }
         setData(response.data);
@@ -50,25 +60,65 @@ function Characters({ userInfos, setUserInfos }) {
     fetchData();
   }, [page, search, searching]);
 
+  useEffect(() => {
+    const regexp = new RegExp(`${search}`, "i");
+    if (data) {
+      const tempSuggestions = data.results.filter((item) =>
+        regexp.test(item.name.toLowerCase())
+      );
+
+      setSuggestions(tempSuggestions);
+    }
+  }, [search, data]);
+
   return data ? (
     <main className="main">
       <h1>
         <span className="underline">CHARACTERS</span>
       </h1>
-      {/* <p className="subtitle">
-        You can add a character to your favorites by clicking the star
-        <br />
-        Click a card to have more info about the character
-      </p> */}
       <div className="filter">
-        <input
-          type="text"
-          name="search-characters"
-          id="search-characters"
-          placeholder="Search for characters"
-          value={search}
-          onChange={handleFilter}
-        />
+        <div className="filter-wrapper">
+          <input
+            type="text"
+            name="search-characters"
+            id="search-characters"
+            placeholder="Search for characters"
+            value={search}
+            onChange={handleFilter}
+            onBlur={() => {
+              setTimeout(() => {
+                setDisplaySuggestions(false);
+                setSuggestions([]);
+              }, 250);
+            }}
+            autoComplete="off"
+          />
+          <div className="autocomplete-wrapper">
+            {suggestions.length > 0 && displaySuggestions
+              ? suggestions.map((suggestion, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="suggestion"
+                      onClick={(e) => {
+                        handleSuggestion(suggestion.name);
+                      }}
+                    >
+                      <span>{suggestion.name}</span>
+                      <img
+                        src={
+                          suggestion.thumbnail.path +
+                          "." +
+                          suggestion.thumbnail.extension
+                        }
+                        alt={suggestion.name}
+                      />{" "}
+                    </div>
+                  );
+                })
+              : null}
+          </div>
+        </div>
       </div>
       <Pagination
         page={page}

@@ -139,7 +139,7 @@ function Characters({
             return (
               <Link
                 key={item._id}
-                to={`/personnage/${item._id}`}
+                to={`/character/${item._id}`}
                 className="item"
               >
                 <Item

@@ -91,7 +91,7 @@ function App() {
             setModalFavorites={setModalFavorites}
           />
         </Route>
-        <Route path="/personnages">
+        <Route path="/characters">
           <Characters
             userInfos={userInfos}
             setUserInfos={setUserInfos}
@@ -99,10 +99,10 @@ function App() {
             setModalFavorites={setModalFavorites}
           />
         </Route>
-        <Route path="/favoris">
+        <Route path="/favorites">
           <Favorites userInfos={userInfos} setUserInfos={setUserInfos} />
         </Route>
-        <Route path="/personnage/:id">
+        <Route path="/character/:id">
           <Character userInfos={userInfos} setUserInfos={setUserInfos} />
         </Route>
         <Route path="/">

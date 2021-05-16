@@ -97,7 +97,7 @@ function Header({
         )}
 
         <div className="link-wrapper">
-          <Link to="/personnages">Characters</Link>
+          <Link to="/characters">Characters</Link>
         </div>
         <Link to="/" className="logo-wrapper">
           <img src={logo} alt="logo" className="logo" />
@@ -106,7 +106,7 @@ function Header({
           <Link to="/comics">Comics</Link>
         </div>
         <div className="link-wrapper">
-          <Link to="/favoris">Favorites</Link>
+          <Link to="/favorites">Favorites</Link>
         </div>
       </nav>
     </header>

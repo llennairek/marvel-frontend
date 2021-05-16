@@ -36,11 +36,14 @@ function App() {
     const fetchData = async () => {
       if (userToken) {
         try {
-          const response = await axios.get("http://localhost:3001/user", {
-            headers: {
-              authorization: `Bearer ${userToken}`,
-            },
-          });
+          const response = await axios.get(
+            "https://baf-marvel-backend.herokuapp.com/user",
+            {
+              headers: {
+                authorization: `Bearer ${userToken}`,
+              },
+            }
+          );
           setUserInfos(response.data);
         } catch (error) {
           console.error({ error: error.message });

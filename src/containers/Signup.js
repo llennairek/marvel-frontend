@@ -23,11 +23,14 @@ function Signup({
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/user/signup", {
-        username,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://baf-marvel-backend.herokuapp.com/user/signup",
+        {
+          username,
+          email,
+          password,
+        }
+      );
       handleToken(response.data.token);
       setUserInfos({
         username: response.data.username,

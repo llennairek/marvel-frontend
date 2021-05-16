@@ -45,13 +45,13 @@ function Comics({
         let response;
         if (searching) {
           response = await axios.get(
-            `http://localhost:3001/comics?title=${search}`
+            `https://baf-marvel-backend.herokuapp.com/comics?title=${search}`
           );
           setSearching(false);
           setPage(1);
         } else {
           response = await axios.get(
-            `http://localhost:3001/comics?page=${page}&title=${search}`
+            `https://baf-marvel-backend.herokuapp.com/comics?page=${page}&title=${search}`
           );
         }
 

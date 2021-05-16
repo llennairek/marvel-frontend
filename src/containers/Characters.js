@@ -39,14 +39,16 @@ function Characters({ userInfos, setUserInfos }) {
         let response;
         if (searching) {
           response = await axios.get(
-            encodeURI(`http://localhost:3001/characters?name=${search}`)
+            encodeURI(
+              `https://baf-marvel-backend.herokuapp.com/characters?name=${search}`
+            )
           );
           setSearching(false);
           setPage(1);
         } else {
           response = await axios.get(
             encodeURI(
-              `http://localhost:3001/characters?page=${page}&name=${search}`
+              `https://baf-marvel-backend.herokuapp.com/characters?page=${page}&name=${search}`
             )
           );
         }

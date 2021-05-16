@@ -24,10 +24,13 @@ function Login({
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/user/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://baf-marvel-backend.herokuapp.com/user/login",
+        {
+          email,
+          password,
+        }
+      );
       handleToken(response.data.token);
       setUserInfos({
         username: response.data.username,

@@ -20,9 +20,12 @@ function Item({ data, userInfos, setUserInfos }) {
         setUserInfos(tempUser);
         setIsFavorite(!isFavorite);
         try {
-          await axios.put(`http://localhost:3001/user/${userInfos._id}`, {
-            favorites: tempUser.favorites,
-          });
+          await axios.put(
+            `https://baf-marvel-backend.herokuapp.com/user/${userInfos._id}`,
+            {
+              favorites: tempUser.favorites,
+            }
+          );
         } catch (error) {
           console.error({ error: error.message });
         }
@@ -32,9 +35,12 @@ function Item({ data, userInfos, setUserInfos }) {
         setUserInfos(tempUser);
         setIsFavorite(!isFavorite);
         try {
-          await axios.put(`http://localhost:3001/user/${userInfos._id}`, {
-            favorites: tempUser.favorites,
-          });
+          await axios.put(
+            `https://baf-marvel-backend.herokuapp.com/user/${userInfos._id}`,
+            {
+              favorites: tempUser.favorites,
+            }
+          );
         } catch (error) {
           console.error({ error: error.message });
         }

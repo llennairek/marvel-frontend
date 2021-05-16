@@ -12,7 +12,9 @@ function Character({ userInfos, setUserInfos }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3001/comics/${id}`);
+      const response = await axios.get(
+        `https://baf-marvel-backend.herokuapp.com/comics/${id}`
+      );
       setData(response.data);
     };
 

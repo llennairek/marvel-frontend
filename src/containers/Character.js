@@ -5,7 +5,12 @@ import ItemFlip from "../components/Item/ItemFlip";
 import defaultImage from "../assets/default-image.jpg";
 import "./Character.css";
 
-function Character({ userInfos, setUserInfos }) {
+function Character({
+  userInfos,
+  setUserInfos,
+  modalFavorites,
+  setModalFavorites,
+}) {
   const { id } = useParams();
 
   const [data, setData] = useState(null);
@@ -48,6 +53,8 @@ function Character({ userInfos, setUserInfos }) {
                     data={item}
                     userInfos={userInfos}
                     setUserInfos={setUserInfos}
+                    modalFavorites={modalFavorites}
+                    setModalFavorites={setModalFavorites}
                     type="comic"
                   />
                 </div>

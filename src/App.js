@@ -103,7 +103,12 @@ function App() {
           <Favorites userInfos={userInfos} setUserInfos={setUserInfos} />
         </Route>
         <Route path="/character/:id">
-          <Character userInfos={userInfos} setUserInfos={setUserInfos} />
+          <Character
+            userInfos={userInfos}
+            setUserInfos={setUserInfos}
+            modalFavorites={modalFavorites}
+            setModalFavorites={setModalFavorites}
+          />
         </Route>
         <Route path="/">
           <Home />

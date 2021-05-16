@@ -13,6 +13,7 @@ function ItemFlip({
   setModalFavorites,
 }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  console.log(setModalFavorites);
 
   const handleFavorite = async (event) => {
     event.preventDefault();

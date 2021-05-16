@@ -5,7 +5,12 @@ import "./Characters.css";
 import Item from "../components/Item/Item";
 import Pagination from "../components/Pagination/Pagination";
 
-function Characters({ userInfos, setUserInfos }) {
+function Characters({
+  userInfos,
+  setUserInfos,
+  modalFavorites,
+  setModalFavorites,
+}) {
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
@@ -141,6 +146,8 @@ function Characters({ userInfos, setUserInfos }) {
                   data={item}
                   userInfos={userInfos}
                   setUserInfos={setUserInfos}
+                  modalFavorites={modalFavorites}
+                  setModalFavorites={setModalFavorites}
                 />
               </Link>
             );

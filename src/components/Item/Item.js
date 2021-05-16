@@ -4,7 +4,13 @@ import "./Item.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
-function Item({ data, userInfos, setUserInfos }) {
+function Item({
+  data,
+  userInfos,
+  setUserInfos,
+  modalFavorites,
+  setModalFavorites,
+}) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleFavorite = async (event) => {
@@ -46,7 +52,7 @@ function Item({ data, userInfos, setUserInfos }) {
         }
       }
     } else {
-      alert("You have to be logged in to add favorites");
+      setModalFavorites(true);
     }
   };
 

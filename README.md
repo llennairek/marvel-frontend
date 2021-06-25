@@ -1,4 +1,4 @@
-# 🦸 MARVEL WEB APP 
+# 🦸 MARVEL WEB APP - FRONTEND
 
 Date : May 2021  
 Backend Repo - https://github.com/llennairek/marvel-backend  

@@ -41,6 +41,7 @@ Following screenshots in order: home page, characters, comics, individual charac
 <img src="https://user-images.githubusercontent.com/78684032/122961496-bcb42b00-d384-11eb-9ed9-d28ebe488d52.png" width="15" height="15">   ReactJS  
 <img src="https://user-images.githubusercontent.com/78684032/122961852-19174a80-d385-11eb-8e49-67b7afe7e605.png" width="15" height="15">   HTML5   
 <img src="https://user-images.githubusercontent.com/78684032/122962917-24b74100-d386-11eb-8936-c97fde244ee8.jpg" width="15" height="15">   CSS3  
+<img src="https://user-images.githubusercontent.com/78684032/122963272-6811af80-d386-11eb-894b-0b32fff324bf.png" width="15" height="15">   Netlify  
 
 ## 📦 Packages
 react-router-dom  

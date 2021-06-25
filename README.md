@@ -10,6 +10,7 @@ Website - https://modest-hopper-3fe85c.netlify.app/
 
 Marvel web app made at Bootcamp [Le Reacteur](https://www.lereacteur.io/).  
 Design and code a Marvel's comics and characters website from scratch
+Create a backend
 
 Following screenshots in order: home page, characters, comics, individual character page, signup, login and favorites.
 
